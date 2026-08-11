@@ -14,11 +14,31 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter your guess: ");
-        int guess = input.nextInt();
+        int attempts = 0;
 
-        System.out.println("Your guess: " + guess);
-        System.out.println("The secret number is: " + secretNumber);
+        while (true) {
+
+            System.out.print("Enter your guess: ");
+            int guess = input.nextInt();
+
+            attempts++;
+
+            if (guess == secretNumber) {
+
+                System.out.println("Congratulations! You guessed it!");
+                System.out.println("You guessed it in " + attempts + " attempts!");
+
+                break;
+
+            } else if (guess < secretNumber) {
+
+                System.out.println("Too low!");
+
+            } else {
+
+                System.out.println("Too high!");
+            }
+        }
 
         input.close();
     }
