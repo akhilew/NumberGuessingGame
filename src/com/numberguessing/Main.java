@@ -1,45 +1,74 @@
 package com.numberguessing;
 
-import java.util.Random;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Number Guessing Game");
-
-        Random random = new Random();
-        int secretNumber = random.nextInt(100) + 1;
-
         Scanner input = new Scanner(System.in);
+        Random random = new Random();
 
-        int attempts = 0;
+        boolean playAgain = true;
+        int bestScore = 0;
 
-        while (true) {
+        System.out.println("==========================");
+        System.out.println("   NUMBER GUESSING GAME");
+        System.out.println("==========================");
 
-            System.out.print("Enter your guess: ");
-            int guess = input.nextInt();
+        while (playAgain) {
 
-            attempts++;
+            int secretNumber = random.nextInt(100) + 1;
+            int attempts = 0;
 
-            if (guess == secretNumber) {
+            System.out.println();
+            System.out.println("I'm thinking of a number between 1 and 100.");
 
-                System.out.println("Congratulations! You guessed it!");
-                System.out.println("You guessed it in " + attempts + " attempts!");
+            while (true) {
 
-                break;
+                System.out.print("Enter your guess: ");
+                int guess = input.nextInt();
 
-            } else if (guess < secretNumber) {
+                attempts++;
 
-                System.out.println("Too low!");
+                if (guess == secretNumber) {
 
-            } else {
+                    System.out.println("Congratulations! You guessed it!");
+                    System.out.println("You guessed it in " + attempts + " attempts!");
 
-                System.out.println("Too high!");
+                    if (bestScore == 0 || attempts < bestScore) {
+                        bestScore = attempts;
+                        System.out.println("New High Score!");
+                    }
+
+                    System.out.println("Best Score: " + bestScore + " attempts");
+
+                    break;
+
+                } else if (guess < secretNumber) {
+
+                    System.out.println("Too low!");
+
+                } else {
+
+                    System.out.println("Too high!");
+                }
+            }
+
+            System.out.print("\nPlay again? (y/n): ");
+            String answer = input.next();
+
+            if (!answer.equalsIgnoreCase("y")) {
+                playAgain = false;
             }
         }
 
         input.close();
+
+        System.out.println();
+        System.out.println("==========================");
+        System.out.println("      THANKS FOR PLAYING!");
+        System.out.println("==========================");
     }
 }
