@@ -29,6 +29,11 @@ public class Main {
 
                 System.out.print("Enter your guess: ");
 
+                if (!input.hasNextLine()) {
+                    playAgain = false;
+                    break;
+                }
+
                 String userInput = input.nextLine();
 
                 int guess;
@@ -71,9 +76,18 @@ public class Main {
                 }
             }
 
+            if (!playAgain) {
+                break;
+            }
+
             while (true) {
 
                 System.out.print("\nPlay again? (y/n): ");
+
+                if (!input.hasNextLine()) {
+                    playAgain = false;
+                    break;
+                }
 
                 String answer = input.nextLine().trim();
 
