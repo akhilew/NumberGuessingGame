@@ -29,13 +29,16 @@ public class Main {
 
                 System.out.print("Enter your guess: ");
 
-                if (!input.hasNextInt()) {
+                String userInput = input.nextLine();
+
+                int guess;
+
+                try {
+                    guess = Integer.parseInt(userInput.trim());
+                } catch (NumberFormatException e) {
                     System.out.println("Please enter a valid number.");
-                    input.next();
                     continue;
                 }
-
-                int guess = input.nextInt();
 
                 if (guess < 1 || guess > 100) {
                     System.out.println("Please enter a number between 1 and 100.");
