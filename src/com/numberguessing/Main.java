@@ -71,11 +71,22 @@ public class Main {
                 }
             }
 
-            System.out.print("\nPlay again? (y/n): ");
-            String answer = input.next();
+            while (true) {
 
-            if (!answer.equalsIgnoreCase("y")) {
-                playAgain = false;
+                System.out.print("\nPlay again? (y/n): ");
+
+                String answer = input.nextLine().trim();
+
+                if (answer.equalsIgnoreCase("y")) {
+                    break;
+                }
+
+                if (answer.equalsIgnoreCase("n")) {
+                    playAgain = false;
+                    break;
+                }
+
+                System.out.println("Please enter y or n.");
             }
         }
 
