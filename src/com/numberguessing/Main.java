@@ -21,11 +21,14 @@ public class Main {
 
             int secretNumber = random.nextInt(100) + 1;
             int attempts = 0;
+            int maxAttempts = 10;
+            boolean won = false;
 
             System.out.println();
             System.out.println("I'm thinking of a number between 1 and 100.");
+            System.out.println("You have " + maxAttempts + " attempts.");
 
-            while (true) {
+            while (attempts < maxAttempts) {
 
                 System.out.print("Enter your guess: ");
 
@@ -54,8 +57,11 @@ public class Main {
 
                 if (guess == secretNumber) {
 
+                    won = true;
+
                     System.out.println("Congratulations! You guessed it!");
-                    System.out.println("You guessed it in " + attempts + " attempts!");
+                    System.out.println("You guessed it in " + attempts
+                            + (attempts == 1 ? " attempt!" : " attempts!"));
 
                     if (bestScore == 0 || attempts < bestScore) {
                         bestScore = attempts;
@@ -74,10 +80,17 @@ public class Main {
 
                     System.out.println("Too high!");
                 }
+
+                System.out.println("Attempts remaining: " + (maxAttempts - attempts));
             }
 
             if (!playAgain) {
                 break;
+            }
+
+            if (attempts == maxAttempts && !won) {
+                System.out.println("Game Over!");
+                System.out.println("The correct number was: " + secretNumber);
             }
 
             while (true) {
