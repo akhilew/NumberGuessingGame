@@ -1,9 +1,13 @@
 package com.numberguessing;
 
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
+
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 100;
+    private static final int MAX_ATTEMPTS = 10;
 
     public static void main(String[] args) {
 
@@ -19,16 +23,16 @@ public class Main {
 
         while (playAgain) {
 
-            int secretNumber = random.nextInt(100) + 1;
+            int secretNumber = random.nextInt(MAX_NUMBER) + MIN_NUMBER;
             int attempts = 0;
-            int maxAttempts = 10;
             boolean won = false;
 
             System.out.println();
-            System.out.println("I'm thinking of a number between 1 and 100.");
-            System.out.println("You have " + maxAttempts + " attempts.");
+            System.out.println("I'm thinking of a number between "
+                    + MIN_NUMBER + " and " + MAX_NUMBER + ".");
+            System.out.println("You have " + MAX_ATTEMPTS + " attempts.");
 
-            while (attempts < maxAttempts) {
+            while (attempts < MAX_ATTEMPTS) {
 
                 System.out.print("Enter your guess: ");
 
@@ -48,8 +52,9 @@ public class Main {
                     continue;
                 }
 
-                if (guess < 1 || guess > 100) {
-                    System.out.println("Please enter a number between 1 and 100.");
+                if (guess < MIN_NUMBER || guess > MAX_NUMBER) {
+                    System.out.println("Please enter a number between "
+                            + MIN_NUMBER + " and " + MAX_NUMBER + ".");
                     continue;
                 }
 
@@ -81,14 +86,17 @@ public class Main {
                     System.out.println("Too high!");
                 }
 
-                System.out.println("Attempts remaining: " + (maxAttempts - attempts));
+                if (attempts < MAX_ATTEMPTS) {
+                    System.out.println("Attempts remaining: "
+                            + (MAX_ATTEMPTS - attempts));
+                }
             }
 
             if (!playAgain) {
                 break;
             }
 
-            if (attempts == maxAttempts && !won) {
+            if (attempts == MAX_ATTEMPTS && !won) {
                 System.out.println("Game Over!");
                 System.out.println("The correct number was: " + secretNumber);
             }
