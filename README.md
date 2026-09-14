@@ -21,7 +21,7 @@ A console-based Number Guessing Game built using Java, where the player tries to
 2. Open a terminal or command prompt in the project folder.
 3. Compile and run the program:
 
-```bash
+```text
 javac -d bin src/com/numberguessing/Main.java
 java -cp bin com.numberguessing.Main
 ```
@@ -71,6 +71,19 @@ Play again? (y/n): n
 - Java Standard Library (`java.util.Scanner`, `java.util.Random`)
 - Git and GitHub
 
+## Project Structure
+
+```text
+NumberGuessingGame/
+├── src/
+│   └── com/
+│       └── numberguessing/
+│           └── Main.java
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
 ## Learning Outcomes
 
 - Java fundamentals (loops, conditionals, methods)
@@ -80,19 +93,10 @@ Play again? (y/n): n
 - Random number generation
 - Basic Git and GitHub workflow
 
-## Project Structure
-
-```text
-NumberGuessingGame/
-├── README.md
-├── LICENSE
-├── .gitignore
-└── src/
-    └── com/
-        └── numberguessing/
-            └── Main.java
-```
-
 ## License
 
 This project is licensed under the MIT License.
+
+## Author
+
+Akhil N
